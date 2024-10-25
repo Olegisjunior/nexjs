@@ -15,8 +15,8 @@ async function getData(id: string) {
   return response.json();
 }
 
-export async function generateMetadata({ params: { id } }: Props): Promise<Metadata> {
-  // const { id } = await params; // треба так використовувати інакше помилки лізуть
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = params; // треба так використовувати інакше помилки лізуть
   const post = await getData(id);
 
   return {
@@ -24,8 +24,8 @@ export async function generateMetadata({ params: { id } }: Props): Promise<Metad
   };
 }
 
-export default async function Post({ params: { id } }: Props) {
-  // const { id } = await params; // треба так використовувати інакше помилки лізуть
+export default async function Post({ params }: Props) {
+  const { id } = params; // треба так використовувати інакше помилки лізуть
   const post = await getData(id);
 
   return (
