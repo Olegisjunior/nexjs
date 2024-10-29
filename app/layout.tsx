@@ -2,6 +2,8 @@ import Header from "@/components/Header";
 import "./globals.css";
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
+import { StoreProvider } from "../store/storeProvider";
+import { Providers } from "@/components/Providers";
 
 export const metadata: Metadata = {
   title: "Next App",
@@ -10,12 +12,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body>
-        <Header />
-        <main className="container">{children}</main>
-        <Footer />
-      </body>
-    </html>
+    <StoreProvider>
+      <html lang="en">
+        <body>
+          <Providers>
+            <Header />
+            <main className="container">{children}</main>
+            <Footer />
+          </Providers>
+        </body>
+      </html>
+    </StoreProvider>
   );
 }
